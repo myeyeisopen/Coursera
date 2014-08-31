@@ -1,0 +1,16 @@
+#Open png file to write to
+  png(file = "plot2.png")
+  
+  #Plot Emissions by year, and set title for the graph.  Also, set labels & limits for the axes
+  plot(emissionsByYear$year, emissionsByYear$Emissions, main = expression('Baltimore City PM'[2.5]*' Emissions from 1999 to 2008'), 
+       pch = 20, xlab="Year", ylab="Emissions (in tons)", ylim=c(1800,3400), xlim=c(1999, 2009), axes=FALSE)
+  #Create x and y axes
+  axis(1, c(1999, 2002, 2005, 2008))
+  axis(2, seq(1800, 3300, 300))
+  
+  #Label each point with the Emissions value
+  text(x=emissionsByYear$year, y=emissionsByYear$Emissions, labels=emissionsByYear$Emissions, pos=4)
+  
+  #Create lines between the points
+  lines(x=emissionsByYear$year, y=emissionsByYear$Emissions, type = "l")
+  dev.off()
